@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3ur-Q0-gpL">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23504"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notes-->
+        <scene sceneID="G9F-SB-ROn">
+            <objects>
+                <tableViewController storyboardIdentifier="NotesMainViewController" title="Notes" id="3ur-Q0-gpL" customClass="ViewController" customModule="NotesStarface" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="uIs-OT-Iv2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="86" id="QJO-1q-Hav" customClass="NotesCell" customModule="NotesStarface" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="86"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QJO-1q-Hav" id="sJU-u7-sy3">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="86"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEj-MT-YQY" userLabel="TitleLabel">
+                                            <rect key="frame" x="20" y="5" width="353" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCo-fa-VMF" userLabel="PreviewTextField">
+                                            <rect key="frame" x="20" y="36" width="353" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YEj-MT-YQY" firstAttribute="top" secondItem="sJU-u7-sy3" secondAttribute="top" constant="5" id="9mH-PV-PpS"/>
+                                        <constraint firstItem="YEj-MT-YQY" firstAttribute="leading" secondItem="sJU-u7-sy3" secondAttribute="leading" constant="20" symbolic="YES" id="KgD-tI-48p"/>
+                                        <constraint firstAttribute="trailing" secondItem="YEj-MT-YQY" secondAttribute="trailing" constant="20" symbolic="YES" id="Ktp-6E-ZlJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="UCo-fa-VMF" secondAttribute="bottom" constant="5" id="Mvn-Yy-JI5"/>
+                                        <constraint firstItem="UCo-fa-VMF" firstAttribute="top" secondItem="YEj-MT-YQY" secondAttribute="bottom" constant="10" id="oVa-N4-Txy"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="UCo-fa-VMF" secondAttribute="trailing" id="qT6-Gj-C1d"/>
+                                        <constraint firstItem="UCo-fa-VMF" firstAttribute="leading" secondItem="sJU-u7-sy3" secondAttribute="leadingMargin" id="sz9-VG-I6M"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="previewTextField" destination="UCo-fa-VMF" id="6Hx-yr-64q"/>
+                                    <outlet property="titleLabel" destination="YEj-MT-YQY" id="TnZ-xw-RPG"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3ur-Q0-gpL" id="1eE-Hg-2wO"/>
+                            <outlet property="delegate" destination="3ur-Q0-gpL" id="jr1-a8-1Eu"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Vu-fu-Ndn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-92.36641221374046" y="18.30985915492958"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
