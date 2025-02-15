@@ -65,7 +65,7 @@
                             <outlet property="delegate" destination="3ur-Q0-gpL" id="jr1-a8-1Eu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4g3-L5-zRs">
+                    <navigationItem key="navigationItem" title="Notes" id="4g3-L5-zRs">
                         <barButtonItem key="rightBarButtonItem" title="+++" style="plain" id="iCC-dp-IYH">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="LCT-AH-MX5">
                                 <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
