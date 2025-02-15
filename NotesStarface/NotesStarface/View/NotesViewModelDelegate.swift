@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NotesViewModelDelegate {
-    
+    func notesDidUpdate(notes: [NoteEntity])
 }
