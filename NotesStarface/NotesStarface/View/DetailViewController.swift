@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func didTapSave(_ sender: Any) {
         guard titleTextView.text != "" else {
-            showAlert("Please enter both a title and content.")
+            showAlert("Please enter a title.")
             return
         }
         
