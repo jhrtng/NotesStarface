@@ -37,6 +37,13 @@
 			);
 			target = 0763B0022D5FF29C00D4BDA5 /* NotesStarface */;
 		};
+		0786E4EE2D62843C0045E268 /* Exceptions for "NotesStarface" folder in "NotesStarfaceTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Model/NotesStarface.xcdatamodeld,
+			);
+			target = 0763B01B2D5FF29D00D4BDA5 /* NotesStarfaceTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,6 +51,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				0763B02E2D5FF29D00D4BDA5 /* Exceptions for "NotesStarface" folder in "NotesStarface" target */,
+				0786E4EE2D62843C0045E268 /* Exceptions for "NotesStarface" folder in "NotesStarfaceTests" target */,
 			);
 			path = NotesStarface;
 			sourceTree = "<group>";
@@ -473,6 +481,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = johannarei.NotesStarfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "NotesStarface/Model/NotesStarface-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NotesStarface.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NotesStarface";
@@ -491,6 +500,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = johannarei.NotesStarfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "NotesStarface/Model/NotesStarface-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NotesStarface.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NotesStarface";

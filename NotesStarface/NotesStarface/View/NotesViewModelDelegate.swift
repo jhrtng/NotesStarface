@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol NotesViewModelDelegate {
+protocol NotesViewModelDelegate: AnyObject {
+    var viewModel: NotesViewModel! { get }
+    var notes: [NoteEntity]? { get }
     func notesDidUpdate(notes: [NoteEntity])
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 class NotesViewModelImpl: NotesViewModel {
-    var delegate: NotesViewModelDelegate?
-    var noteManager: NoteManagerImpl!
+    weak var delegate: NotesViewModelDelegate?
+    var noteManager: NoteManager?
     var notes: [NoteEntity]?
     
     init(delegate: NotesViewModelDelegate, context: NSManagedObjectContext) {
@@ -20,27 +20,27 @@ class NotesViewModelImpl: NotesViewModel {
     // NotesViewModel
     
     func fetchAllNotes() {
-        notes = noteManager.fetchAllNotes()
+        notes = noteManager?.fetchAllNotes()
         delegate?.notesDidUpdate(notes: notes ?? [])
     }
     
     func saveNote(title: String, content: String, note: NoteEntity?) {
         if let existingNote = note {
             // Edit existing note
-            noteManager.editNote(existingNote, withTitle: title, andContent: content)
+            noteManager?.editNote(existingNote, withTitle: title, andContent: content)
         } else {
             // Create a new note
-            noteManager.createNote(withTitle: title, content: content)
+            noteManager?.createNote(withTitle: title, content: content)
         }
 
         // update notes
-        notes = noteManager.fetchAllNotes()
+        notes = noteManager?.fetchAllNotes()
         delegate?.notesDidUpdate(notes: notes ?? [])
     }
     
     func deleteNote(note: NoteEntity) {
-        noteManager.deleteNote(note)
-        notes = noteManager.fetchAllNotes()
+        noteManager?.deleteNote(note)
+        notes = noteManager?.fetchAllNotes()
         delegate?.notesDidUpdate(notes: notes ?? [])
     }
     
