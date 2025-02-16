@@ -14,12 +14,6 @@
 // Handles all interactions with Core Data
 @interface NoteManagerImpl : NSObject <NoteManager>
 
-@property(nonatomic, readonly, strong) NSManagedObjectContext *context;
-
 - (instancetype)initWithContext:(NSManagedObjectContext *)context;
-
-- (NSArray<NoteEntity *> *)fetchAllNotes;
-- (void)createNoteWithTitle:(NSString *)title content:(NSString *)content;
-- (void)deleteNote:(NoteEntity *)note;
 
 @end

@@ -27,9 +27,7 @@ class NotesViewModelImpl: NotesViewModel {
     func saveNote(title: String, content: String, note: NoteEntity?) {
         if let existingNote = note {
             // Edit existing note
-            existingNote.title = title
-            existingNote.content = content
-            existingNote.timestamp = Date()
+            noteManager.editNote(existingNote, withTitle: title, andContent: content)
         } else {
             // Create a new note
             noteManager.createNote(withTitle: title, content: content)

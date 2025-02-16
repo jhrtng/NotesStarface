@@ -9,5 +9,5 @@ import UIKit
 
 class NotesCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var previewTextField: UITextField!
+    @IBOutlet weak var contentPreviewLabel: UILabel!
 }

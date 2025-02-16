@@ -19,6 +19,7 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
+        // button to add new note
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapCreateNewNote))
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -34,7 +35,7 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
         let note = notes?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath) as! NotesCell
         cell.titleLabel.text = note?.title
-        cell.previewTextField.text = note?.content
+        cell.contentPreviewLabel.text = note?.content
         return cell
     }
     
@@ -75,7 +76,6 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
             detailViewController.viewModel = viewModel // should maybe be separate ViewModel
             detailViewController.note = notes?[indexPath.row]
         } else if segue.identifier == "createNewNote" {
-            // TODO: can maybe remove if/else here?
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.viewModel = viewModel // should maybe be separate ViewModel
         }

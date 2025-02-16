@@ -8,8 +8,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
-    
     @IBOutlet weak var titleTextView: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     var viewModel: NotesViewModel!
@@ -18,11 +16,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapSave))
-        navigationItem.rightBarButtonItem?.title = "Save" // TODO: doesn't work yet
+        // button for saving note
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSave))
         
         // if editing, note is not nil
-        // note is nill if creating new note
+        // if creating new note, note is nil
         if let note = note {
             titleTextView.text = note.title
             contentTextView.text = note.content

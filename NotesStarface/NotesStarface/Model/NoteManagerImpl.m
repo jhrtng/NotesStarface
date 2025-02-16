@@ -11,6 +11,8 @@
 
 @implementation NoteManagerImpl
 
+@synthesize context = _context;
+
 - (instancetype)initWithContext:(NSManagedObjectContext *)context {
     self = [super init];
     if (self) {
@@ -61,33 +63,17 @@
     }
 }
 
-- (void)editNote:(NoteEntity *)note {
-    NSFetchRequest *fetchRequest = [NoteEntity fetchRequest];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"uuid == %@", note.noteID];
+- (void)editNote:(NoteEntity *)note withTitle:(NSString *)title andContent:(NSString *)content {
+    
+    note.title = title;
+    note.content = content;
+    note.timestamp = [NSDate date];  // Always update the timestamp when saving
     
     NSError *error;
-    NSArray *results = @[[self.context executeRequest:fetchRequest error:&error]];
-    
-    if (error) {
+    BOOL result = [self.context save:&error];
+    if (!result)
+    {
         // TODO: error handling. Maybe show an alert?
-    }
-    
-    // Ensure we found exactly one note
-    if (results.count == 1) {
-        NoteEntity *fetchedNote = results.firstObject;
-
-        // TODO: does this work? don't need maybe
-        // Update the title, content, and timestamp
-        fetchedNote.title = note.title;
-        fetchedNote.content = note.content;
-        fetchedNote.timestamp = [NSDate date];  // Always update the timestamp when saving
-            
-        // Save the context to persist changes
-        BOOL result = [self.context save:&error];
-        if (!result)
-        {
-            // TODO: error handling. Maybe show an alert?
-        }
     }
 }
 
