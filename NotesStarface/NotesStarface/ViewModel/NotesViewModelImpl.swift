@@ -40,6 +40,12 @@ class NotesViewModelImpl: NotesViewModel {
         delegate?.notesDidUpdate(notes: notes ?? [])
     }
     
+    func deleteNote(note: NoteEntity) {
+        noteManager.deleteNote(note)
+        notes = noteManager.fetchAllNotes()
+        delegate?.notesDidUpdate(notes: notes ?? [])
+    }
+    
     func searchForNotes(with text: String) {
         let filteredNotes = notes?.filter { note in
             note.title?.localizedCaseInsensitiveContains(text) ?? false ||

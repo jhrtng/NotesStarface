@@ -38,6 +38,20 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let note = notes?[indexPath.row] else {
+            return
+        }
+        
+        if editingStyle == .delete {
+            viewModel.deleteNote(note: note)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetailViewController", sender: indexPath)
     }
