@@ -23,7 +23,7 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         viewModel = NotesViewModelImpl(delegate: self, context: context)
-        notes = viewModel.fetchAllNotes()
+        viewModel.fetchAllNotes()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,6 +98,7 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
+            viewModel.fetchAllNotes()
             return
         }
         
@@ -107,6 +108,15 @@ extension ViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         // show cursor on user interaction
         searchBar.becomeFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            return
+        }
+        
+        viewModel.searchForNotes(with: searchText)
+        searchBar.resignFirstResponder()
     }
 }
 

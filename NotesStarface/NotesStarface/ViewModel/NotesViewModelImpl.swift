@@ -19,9 +19,9 @@ class NotesViewModelImpl: NotesViewModel {
     
     // NotesViewModel
     
-    func fetchAllNotes() -> [NoteEntity] {
+    func fetchAllNotes() {
         notes = noteManager.fetchAllNotes()
-        return notes ?? []
+        delegate?.notesDidUpdate(notes: notes ?? [])
     }
     
     func saveNote(title: String, content: String, note: NoteEntity?) {

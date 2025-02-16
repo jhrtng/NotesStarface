@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NotesViewModel {
-    func fetchAllNotes() -> [NoteEntity]
+    func fetchAllNotes()
     func saveNote(title: String, content: String, note: NoteEntity?)
     func deleteNote(note: NoteEntity)
     func searchForNotes(with text: String)
