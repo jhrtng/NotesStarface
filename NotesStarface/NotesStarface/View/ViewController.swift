@@ -53,7 +53,14 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // disable the search bar's cursor
+        searchBar.resignFirstResponder()
         performSegue(withIdentifier: "showDetailViewController", sender: indexPath)
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // disable the search bar's cursor
+        searchBar.resignFirstResponder()
     }
     
     @IBAction func didTapCreateNewNote(_ sender: Any) {
@@ -95,6 +102,11 @@ extension ViewController: UISearchBarDelegate {
         }
         
         viewModel.searchForNotes(with: searchText)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        // show cursor on user interaction
+        searchBar.becomeFirstResponder()
     }
 }
 
