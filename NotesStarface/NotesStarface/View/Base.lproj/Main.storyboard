@@ -80,6 +80,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="l8T-a3-Zcc" id="erp-nj-UVS"/>
                         <segue destination="eXO-54-I4P" kind="show" identifier="showDetailViewController" id="4P1-Qt-Wx7"/>
                     </connections>
                 </tableViewController>

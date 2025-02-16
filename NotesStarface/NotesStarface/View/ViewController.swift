@@ -11,6 +11,8 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
     var viewModel: NotesViewModel!
     var notes: [NoteEntity]?
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,18 +60,27 @@ class ViewController: UITableViewController, NotesViewModelDelegate {
         }
     }
     
-    // NotesViewModelDelegate    
+    // NotesViewModelDelegate
+    
     func notesDidUpdate(notes: [NoteEntity]) {
         self.notes = notes
         tableView.reloadData()
     }
-    
     
     // 'required' initializer 'init(coder:)' must be provided by subclass of
     // 'UITableViewController'; this is an error in the Swift 6 language mode
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+}
 
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            return
+        }
+        
+        viewModel.searchForNotes(with: searchText)
+    }
 }
 

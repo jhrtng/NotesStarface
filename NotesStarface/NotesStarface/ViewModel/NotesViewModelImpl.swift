@@ -40,4 +40,13 @@ class NotesViewModelImpl: NotesViewModel {
         delegate?.notesDidUpdate(notes: notes ?? [])
     }
     
+    func searchForNotes(with text: String) {
+        let filteredNotes = notes?.filter { note in
+            note.title?.localizedCaseInsensitiveContains(text) ?? false ||
+            note.content?.localizedCaseInsensitiveContains(text) ?? false
+        }
+        
+        delegate?.notesDidUpdate(notes: filteredNotes ?? [])
+    }
+    
 }
