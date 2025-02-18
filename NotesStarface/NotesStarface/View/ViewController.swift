@@ -23,7 +23,6 @@ struct NotesApp: App {
 
 struct PersistenceController {
     static let shared = PersistenceController()
-
     let container: NSPersistentContainer
 
     init() {
@@ -39,14 +38,13 @@ struct PersistenceController {
 struct MainView: View {
     @StateObject var viewModel = NotesViewModelImpl(context: PersistenceController.shared.container.viewContext)
     @State private var searchText = ""
-    @State private var selectedNote: NoteEntity? // State for managing navigation
     
     var body: some View {
         NavigationStack {
             VStack {
                 List {
                     ForEach(viewModel.notes ?? []) { note in
-                        NoteCellView(viewModel: _viewModel, note: $selectedNote)
+                        NoteCellView(viewModel: _viewModel, note: note)
                     }
                 }
             }
@@ -65,16 +63,18 @@ struct MainView: View {
 
 struct NoteCellView: View {
     let viewModel: StateObject<NotesViewModelImpl>
-    @Binding var note: NoteEntity? // Bind to the selected note
+    var note: NoteEntity?
     
     var body: some View {
         NavigationLink(destination: DetailView(viewModel: viewModel, note: note)) {
             VStack {
                 Text(note?.title ?? "")
                     .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .lineLimit(1)
                 Text(note?.content ?? "")
                     .font(.none)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .lineLimit(1)
             }
             .padding(.vertical, 10)
