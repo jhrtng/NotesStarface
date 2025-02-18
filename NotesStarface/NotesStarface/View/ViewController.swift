@@ -38,7 +38,6 @@ struct PersistenceController {
 
 struct MainView: View {
     @StateObject var viewModel = NotesViewModelImpl(context: PersistenceController.shared.container.viewContext)
-    @State var notes: [NoteEntity]?
     @State private var searchText = ""
     @State private var selectedNote: NoteEntity? // State for managing navigation
     
@@ -46,7 +45,7 @@ struct MainView: View {
         NavigationStack {
             VStack {
                 List {
-                    ForEach(notes ?? []) { note in
+                    ForEach(viewModel.notes ?? []) { note in
                         NoteCellView(viewModel: _viewModel, note: $selectedNote)
                     }
                 }

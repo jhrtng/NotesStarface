@@ -13,6 +13,7 @@ class NotesViewModelImpl: ObservableObject {
     
     init(context: NSManagedObjectContext) {
         noteManager = NoteManagerImpl(context: context)
+        fetchAllNotes()
     }
     
     // NotesViewModel
