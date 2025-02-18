@@ -41,7 +41,7 @@ class MockNotesViewModelDelegate: NSObject, NotesViewModelDelegate {
 }
 
 class NotesViewModelSearchTests: XCTestCase {
-    var viewModel: NotesViewModel!
+    var viewModel: NotesViewModelImpl!
     var mockDelegate: MockNotesViewModelDelegate!
     var testContext: NSManagedObjectContext!
     

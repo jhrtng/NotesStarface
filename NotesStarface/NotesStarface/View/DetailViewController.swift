@@ -47,7 +47,7 @@ struct DetailView: View {
         .alert("Error", isPresented: $showAlert) {
             Button("OK", role: .cancel) { }
         } message: {
-            Text("Please enter both a title and content.")
+            Text("Please enter a title.")
         }
     }
 
